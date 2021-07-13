@@ -1,18 +1,15 @@
-// document.querySelector("button").addEventListener("click",handleClick);
-//
-// function handleClick(){
-//   alert("I got clicked");
-// }
 
 for (let i = 0; i < document.querySelectorAll(".drum").length; i++) {
   document.querySelectorAll("button")[i].addEventListener("click", function() {
     var buttonInnerHTML = this.textContent;
     makesound(buttonInnerHTML);
+    animation(buttonInnerHTML);
   });
 }
 
 document.addEventListener("keypress",function(){
   makesound(event.key);
+  animation(event.key);
 });
 
 function makesound(key){
@@ -49,4 +46,11 @@ function makesound(key){
     default:cosole.log(buttonInnerHTML);
 
   }
+}
+
+function animation(currentKey){
+  document.querySelector("."+currentKey).classList.add("pressed");
+  setTimeout(function () {
+    document.querySelector("."+currentKey).classList.remove("pressed");
+  }, 100);
 }
